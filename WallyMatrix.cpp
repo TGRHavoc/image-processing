@@ -52,11 +52,9 @@ double WallyMatrix::sumOfSquaredDifferences(Matrix * compareTo) {
 
 	for (int y = 0; y < Matrix::getRows(); y++) {
 		for (int x = 0; x < Matrix::getCols(); x++) {
-<<<<<<< HEAD
+
             if (Matrix::getAt(y, x) != 255){// Skip all white pixels (only compare the actual Wally image)
-=======
-            if (Matrix::getAt(y, x) != 255){
->>>>>>> aef3717... FML - Default Algos working
+
                 double diff = (Matrix::getAt(y, x)) - (compareTo->getAt(y, x));
 
     			ssd += diff*diff;

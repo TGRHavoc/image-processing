@@ -161,11 +161,7 @@ int main(int argc, char** argv)
     char wallyName[] = "wally.pgm";
 
     //Get the best match, using the coeff formula
-<<<<<<< HEAD
     clutteredMatrix->debugSmallerImage(scoreList[0].x, scoreList[0].y, wallyMatrix);
-=======
-    clutteredMatrix->debugSmallerImage(coeffList[0].x, coeffList[0].y, wallyMatrix);
->>>>>>> aef3717... FML - Default Algos working
     std::cout << "I have drawn a black square around Wally in the image \"scene.pgm\"" << std::endl;
 
     ncF->writeMatrix(filename, clutteredMatrix);
