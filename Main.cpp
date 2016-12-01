@@ -85,8 +85,8 @@ int main(int argc, char** argv)
 	int imageW = clutteredMatrix->getCols(); // How big is the scene image? Used in the for loops below
     int imageH = clutteredMatrix->getRows();
 
-	int stepX = wallyMatrix->getCols() / 2; // What should the size of the steps be in the x direction
-	int stepY = wallyMatrix->getRows() / 2; // What should the size of the steps be in the y direction
+	int stepX = 1;// wallyMatrix->getCols() / 2; // What should the size of the steps be in the x direction
+	int stepY = 1;// wallyMatrix->getRows() / 2; // What should the size of the steps be in the y direction
 
 	//std::vector<NCScore> ncList; // Stores the Normalized correlation scores
     //std::vector<CoeffScore> coeffList;
@@ -100,6 +100,7 @@ int main(int argc, char** argv)
 			takes minutes/seconds and, gives the result I expect (I found wally). So,
 			I'm keeping it in... There's probably a much better way to do this...
 	*/
+	std::clock_t start = std::clock();
 
     int counter = 0;// The number of comparisons
 	for (int y = 0; y <= imageH - wallyMatrix->getRows(); y += stepY ) {
@@ -109,7 +110,7 @@ int main(int argc, char** argv)
 #ifndef VERBOSE // If we're not in debug mode, might as well print this nice percentage
 			printf("\r%.2f%% complete",  (pos / (imageW * imageH)) * 100 ); // Ok.. Let's generate a % to show the user that i'm doing something
 #endif
-			//std::cout << "Currently at x=" << x << ", y=" << y << std::endl;
+//			std::cout << "Currently at x=" << x << ", y=" << y << std::endl;
 
 			//Get the image (the same size as wally) at this position.
             Matrix * testMatrix = clutteredMatrix->getSmallerImage(x, y, wallyMatrix);
@@ -119,6 +120,7 @@ int main(int argc, char** argv)
 
 			// Yey :D This is a nice algorithm for image processing.. I read online NC is better for image processing so, I'm using it to get the best results
 			double score = wallyMatrix->normalizedCorrelation(testMatrix);
+			double nc = wallyMatrix->coefficientNormed(testMatrix);
 
             scoreList.push_back({x, y, score});
 
@@ -126,6 +128,10 @@ int main(int argc, char** argv)
             delete testMatrix; // Make sure the test matrix is released from memory (fix those pesky leaks!)
         }
     }
+
+	std::clock_t end = std::clock();
+
+	std::cout << "Main Loop took " << (double(end - start) / CLOCKS_PER_SEC) << " seconds" << std::endl;
 
 	std::cout << "\n" << counter << " comparisons" << std::endl;
 	//Sort the scores (uses the < operator)
