@@ -111,7 +111,7 @@ double WallyMatrix::normalizedCorrelation(Matrix * compareTo) {
 	return dotProduct / squredroot;
 }
 
-double WallyMatrix::coefficientNormed(Matrix * compareTo)
+double WallyMatrix::coefficientNormed(Matrix * compareTo) // This is actually called Normalized Correlation in the lecture slides
 {
     std::clock_t start = std::clock();
 

@@ -10,8 +10,8 @@ public:
 	~SceneMatrix();
 
     Matrix * getSmallerImage(int x, int y, Matrix * smallerImage); // Should get a smaller matrix (of size smallerImage) starting at the given index (x+y)
-
     void debugSmallerImage(int x, int y, Matrix * size);
+    
 private:
 	FileHandler * _filehandler;
 
