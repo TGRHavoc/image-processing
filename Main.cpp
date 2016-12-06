@@ -51,7 +51,7 @@ int main(int argc, char** argv)
 
     int mode = 0;
     std::cout << "How would you like me to search the image?\n1. Pixel by pixel (slowest, most likely to find the template image)" << std::endl;
-    std::cout << "2. In steps of " << WALLY_COLS/2 << "x" << WALLY_ROWS/2 << " (faster, less likely to find the template image)" << std::endl;
+    std::cout << "2. In steps of " << WALLY_COLS/2 << "x" << WALLY_ROWS/2 << " (faster, less likely to find the template image) - Suggested" << std::endl;
     std::cout << "3. In steps of " << WALLY_COLS << "x" << WALLY_ROWS << " (fastest, least likely to find the template image)" << std::endl;
 
     std::cin >> mode;
@@ -138,7 +138,7 @@ int main(int argc, char** argv)
 
         ncF->writeMatrix(topName, topMat); // DO the same for the image matched with the SSD
 
-		//Release the memory... Kind of like the Kraken except useful.
+		//Release the memory... Kind of like the Kraken except, useful.
         delete[] topName;
         delete topMat;
 	}
