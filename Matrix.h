@@ -7,7 +7,6 @@
 */
 class Matrix {
 public:
-	//Matrix();
 	Matrix(int rows, int cols); // Default constructor. Should create the 2D array and populate it with 0s
 	~Matrix(); // Destructor. Should destroy the 2D matrix
 
@@ -18,7 +17,7 @@ public:
     void info(); // Should print some info about the current matrix
 
 	void convertArray(double *toConvert); // Should convert a 1D array into a 2D stored in this matrix
-    void setAt(int row, int col, double value, bool show = false); // Should set the value at the given ROW,COL index to the value supplied
+    void setAt(int row, int col, double value); // Should set the value at the given ROW,COL index to the value supplied
 	double getAt(int row, int col); // Should get the value at the given index
 
     double getSum(); // Should get the sum of all the elements in the current matrix

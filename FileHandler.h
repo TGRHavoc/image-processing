@@ -5,19 +5,24 @@
 
 class FileHandler {
 public:
+    // Default constructor, used to only write data to a file
     FileHandler();
+    // constructor used to read data in from a file
 	FileHandler(char *filename);
+    // Default destructor
 	~FileHandler();
 
+    // Reads the data in from a text file that represents an image
 	double* readFile(int rows, int cols);
 
-    //Let's return a pointer to this image matrix. (It might be too large for stack)
+    // Same as the above method but, returns a matrix
      Matrix * readImage(int rows, int cols);
 
     //Writes a matrix to a pgm file
     void writeMatrix(char * outputFile, Matrix * matrix, int Q = 255);
 
 private:
+    // The file (if any) we can read data from
 	char *filename;
 };
 

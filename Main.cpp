@@ -100,7 +100,7 @@ int main(int argc, char** argv)
             //clutteredMatrix->debugSmallerImage(x, y, testMatrix);
             //std::cout << "cooefficNormed for " << x << ","<< y << " : " << wallyMatrix->cooefficNormed(testMatrix) << std::endl;
 
-			double score = wallyMatrix->coefficientNormed(testMatrix);
+			double score = wallyMatrix->normalizedCorrelation(testMatrix);
 
             scoreList.push_back({x, y, false, score});
 
