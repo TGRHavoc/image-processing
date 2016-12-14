@@ -2,6 +2,7 @@
 #include <iostream> // For outputting text to terminal
 #include <vector> // For storing NC scores in a nice list
 #include <algorithm> // For sorting the NC scores
+#include <stdio.h> // To shut up g++ out the printf below
 
 #include <string> // For creating dynamic file names (e.g. nc_1.pgm)
 #include <cstring> // To make the program compile with g++
@@ -22,7 +23,17 @@
 
 // The image dimensions for the cluttered scene
 #define SCENE_ROWS 768 // How high is it?
-#define SCENE_COLS 1024 // How wid
+#define SCENE_COLS 1024 // How wide
+
+#include <sstream>
+template<typename T>
+std::string to_string(T value){
+    std::ostringstream os ;
+    //throw the value into the string stream
+    os << value ;
+    //convert the string stream into a string and return
+    return os.str() ;
+}
 
 // Structure to group the local image co-ords with their NC score
 struct NNSScore {
@@ -61,8 +72,15 @@ int main(int argc, char** argv)
     }
     // end of getting user input
 
-	WallyMatrix * wallyMatrix = new WallyMatrix(WALLY_ROWS, WALLY_COLS); // Creates the Wally matrix from the "Wally_grey.txt" file
-	SceneMatrix * clutteredMatrix = new SceneMatrix(SCENE_ROWS, SCENE_COLS); // Creates the scene matrix from the "Cluttered_scene.txt" file
+	WallyMatrix * wallyMatrix;
+	SceneMatrix * clutteredMatrix ;
+
+    try{
+        wallyMatrix = new WallyMatrix(WALLY_ROWS, WALLY_COLS); // Creates the Wally matrix from the "Wally_grey.txt" file
+        clutteredMatrix = new SceneMatrix(SCENE_ROWS, SCENE_COLS); // Creates the scene matrix from the "Cluttered_scene.txt" file
+    }catch(int e){
+        return e;
+    }
 
 	int imageW = clutteredMatrix->getCols(); // How big is the scene image? Used in the for loops below
     int imageH = clutteredMatrix->getRows();
@@ -123,7 +141,7 @@ int main(int argc, char** argv)
         std::cout << "\n\nI'm generating the PGM files for the best " << top << " matches.\nThe images will be labelled 1.pgm - " << top << ".pgm" << std::endl;
 	}
 	for (int i = 0; i < top; i++) { // Loop through the best N NC scores
-        std::string topFilename = std::to_string(i+1) + ".pgm";
+        std::string topFilename = to_string(i+1) + ".pgm";
 
         char * topName = new char[topFilename.length() + 1];
 

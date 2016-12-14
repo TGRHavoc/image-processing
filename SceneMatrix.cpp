@@ -22,7 +22,7 @@ SceneMatrix::SceneMatrix(int rows, int cols) : Matrix(rows, cols) {
 	catch (int e) { // readFile can throw an error (file couldn't be opened)
 		std::cout << "Couldn't create a Scene Matrix." << std::endl;
 		std::cout << "Exiting the program" << std::endl;
-		exit(e); // Well.. We couldn't get the large image data so, might as well give up
+		throw e; // Well.. We couldn't get the large image data so, might as well give up
 	}
 
 #ifdef VERBOSE

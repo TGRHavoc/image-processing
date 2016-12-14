@@ -22,7 +22,7 @@ WallyMatrix::WallyMatrix(int rows, int cols) : Matrix( rows, cols ){
 	catch (int e) {
 		std::cout << "Couldn't create a Wally Matrix." << std::endl;
 		std::cout << "Exiting the program" << std::endl;
-		exit(e);
+		throw e;
 	}
 
 #ifdef VERBOSE
