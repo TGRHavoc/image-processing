@@ -1,7 +1,11 @@
+cmake_minimum_required(VERSION 2.8)
 project( IMAGE_PROCESSING )
 
-add_executable( image_processing *.cpp )
+file(GLOB SRC "*.cpp")
+add_executable( image_processing ${SRC} )
 
 install (TARGETS image_processing DESTINATION bin)
 
-file(COPY resources/*.txt DESTINATION bin/*.txt)
+file(GLOB my_resources "resources/*.txt")
+
+file(COPY ${my_resources} DESTINATION .)
