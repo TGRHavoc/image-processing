@@ -4,7 +4,7 @@
 ### Compiling the program
 
 To compile the program using Visual Studio, open the vcxproj file.
-Once the project has opened you can compile by going to `Tools > Build`.
+Once the project has opened you can compile by going to `Build > Build Solution`.
 
 To compile the program on Linux, make sure you have [G++](https://gcc.gnu.org/) installed on the system.
 Then you can run the compile script by running `./compile.sh` in the terminal.
