@@ -1,5 +1,6 @@
 ## Image Processor
 
+##### Note: This program only works for the supplies images at the minute.
 
 ### Compiling the program
 
